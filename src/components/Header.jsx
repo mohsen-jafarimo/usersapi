@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { logout } from "../features/auth/authSlice";
@@ -7,7 +7,9 @@ const Header = () => {
   const dispatch = useDispatch();
   return (
     <header className="shadow-md p-4 flex justify-between items-center relative">
-      <h3 className="text-lg font-bold">Users</h3>
+      <h3 className="text-lg font-bold">
+        <Link to="/">Users</Link>
+      </h3>
 
       <div className="flex items-center justify-between">
         {userInfo ? (

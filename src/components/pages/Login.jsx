@@ -29,6 +29,9 @@ const Login = () => {
       console.log(err?.error?.message || err.error);
     }
   };
+  if (isLoading) {
+    return <div className="flex justify-center pt-20">Loading...</div>;
+  }
   return (
     <div className="w-full h-ful p-20  flex-col flex  items-center">
       <form className="flex flex-col" onSubmit={handleSubmit}>
@@ -52,8 +55,16 @@ const Login = () => {
         </button>
       </form>
       <h3 className="mt-3">
-        are you new? <Link to="/register">register</Link>
+        are you new?{" "}
+        <Link to="/register" className="underline text-blue-300">
+          register
+        </Link>
       </h3>
+      <div>
+        {" "}
+        this server use the reqres and the register logic same Login you can
+        write register section
+      </div>
       <div className="flex justify-evenly mt-20">
         <svg
           xmlns="http://www.w3.org/2000/svg"
