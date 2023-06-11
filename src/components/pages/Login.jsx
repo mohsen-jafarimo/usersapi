@@ -62,7 +62,7 @@ const Login = () => {
       </h3>
       <div>
         {" "}
-        this server use the reqres and the register logic same Login you can
+        this webapp use the reqres api and the register logic same Login you can
         write register section
       </div>
       <div className="flex justify-evenly mt-20">
