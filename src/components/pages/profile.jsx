@@ -1,8 +1,12 @@
 import React from "react";
 import { useParams } from "react-router-dom";
-import { useGetUsersQuery } from "../../features/api/apiSlice";
+import {
+  useGetUsersQuery,
+  useDeleteUserMutation,
+} from "../../features/api/apiSlice";
 const Profile = () => {
   const { data: users } = useGetUsersQuery();
+  const [deleteUser] = useDeleteUserMutation();
   const { id } = useParams();
   const userObject = users.data.filter((user) => user.id == id);
   const { email, avatar, first_name, last_name } = userObject[0];
@@ -32,7 +36,14 @@ const Profile = () => {
               />
             </svg>
           </button>
-          <button className="p-3 bg-red-400 text-white rounded-md">
+          <button
+            className="p-3 bg-red-400 text-white rounded-md"
+            onClick={() => {
+              deleteUser(id);
+              users.data.filter((user) => user.id !== id);
+              console.log("del");
+            }}
+          >
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"

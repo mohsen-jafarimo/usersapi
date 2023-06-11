@@ -11,8 +11,17 @@ export const apiSlice = createApi({
   endpoints: (builder) => ({
     getUsers: builder.query({
       query: () => "/api/users?page=2",
+      providesTags: ["User"],
+    }),
+    deleteUser: builder.mutation({
+      query: (id) => ({
+        url: `/api/users/${id}`,
+        method: "Delete",
+      }),
+      invalidatesTags: ["User"],
     }),
   }),
 });
 
-export const { useGetUsersQuery, useLoginMutation } = apiSlice;
+export const { useGetUsersQuery, useLoginMutation, useDeleteUserMutation } =
+  apiSlice;
